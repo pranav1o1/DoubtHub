@@ -28,7 +28,7 @@ public class MembershipController {
 
     @PostMapping("/assign")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Membership> addMembership(@RequestParam UUID userId, @RequestParam UUID chatRoomId, @RequestParam MemberRole role){
+    public ResponseEntity<Membership> addMembership(@RequestBody UUID userId, @RequestBody UUID chatRoomId, @RequestBody MemberRole role){
 //        User user = userService.getUserById(userId);
 //        ChatRoom chatRoom = chatRoomService.getChatRoom(chatRoomId);
         Membership membership = membershipService.assignUserToRoom(userId,chatRoomId,role);

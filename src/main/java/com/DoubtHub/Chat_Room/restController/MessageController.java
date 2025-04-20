@@ -31,9 +31,9 @@ public class MessageController {
     @PostMapping("/send")
     @PreAuthorize("hasAnyRole('STUDENT', 'MENTOR')")
     public ResponseEntity<Message> sendMessage(
-            @RequestParam UUID chatRoomId,
-            @RequestParam UUID sendById,
-            @RequestParam String content) {
+            @RequestBody UUID chatRoomId,
+            @RequestBody UUID sendById,
+            @RequestBody String content) {
 
         boolean isAllowed = membershipService.isUserInRoom(chatRoomId, sendById);
         if (!isAllowed) {

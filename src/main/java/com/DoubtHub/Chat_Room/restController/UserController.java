@@ -26,18 +26,18 @@ public class UserController {
 
     @PostMapping("/register")
     public User registerUser(
-                             @RequestParam String name,
-                             @RequestParam String emailId,
-                             @RequestParam String password,
-                             @RequestParam Role role) {
+                             @RequestBody String name,
+                             @RequestBody String emailId,
+                             @RequestBody String password,
+                             @RequestBody Role role) {
         return userService.registerUser(name,emailId,password,role);
     }
 
     @PostMapping("/create")
     public User createUser(@RequestParam String name,
-                             @RequestParam String emailId,
-                             @RequestParam String password,
-                             @RequestParam Role role) {
+                             @RequestBody String emailId,
+                             @RequestBody String password,
+                             @RequestBody Role role) {
         return userService.createUserByAdmin(name, emailId, password, role);
     }
 
@@ -63,9 +63,9 @@ public class UserController {
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable UUID id,
-                           @RequestParam String name,
-                           @RequestParam String password,
-                           @RequestParam Role role){
+                           @RequestBody String name,
+                           @RequestBody String password,
+                           @RequestBody Role role){
         return userService.updateUser(id,name,password,role);
     }
 

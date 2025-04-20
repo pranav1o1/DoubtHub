@@ -25,7 +25,7 @@ public class ChatRoomController {
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ChatRoom> createChatRoom(@RequestParam String name, @RequestParam UUID createdById){
+    public ResponseEntity<ChatRoom> createChatRoom(@RequestBody String name, @RequestBody UUID createdById){
         User createdBy = userService.getUserById(createdById);
         ChatRoom chatRoom = chatRoomService.createChatRoom(name,createdBy);
         return ResponseEntity.ok(chatRoom);
